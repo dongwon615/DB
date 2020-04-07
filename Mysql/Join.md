@@ -1,4 +1,5 @@
 # 조인 기본 예제
+## Join에 on을 이용해서 테이블을 합치는 조건을 쓰고, 이후에 where로 원하는 자료를 찾는것. , ansi 방법을 권장!
 ``` sql
 -- join
 
@@ -40,8 +41,9 @@ from emp inner join dept on emp.deptno = dept.deptno;
 
 select *
 
-from emp inner join dept using (deptno);
+from emp inner join dept using (deptno)
 
+-- where ename = "smith";
  
 
 select * from salgrade;
@@ -52,11 +54,7 @@ select empno, ename, sal , grade
 
 from emp, salgrade
 
-where 1 = 1
-
-and sal >= losal 
-
-and sal <= hisal;
+on sal >= losal and sal <= hisal;
 
  
 
@@ -114,7 +112,7 @@ select a.ename, a.empno, b.ename,a.sal, b.sal -- 이름 사번 관리자이름, 
 
 from emp a , emp b
 
-where a.mgr = b.empno;
+on a.mgr = b.empno;
 
  
 
